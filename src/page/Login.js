@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authenticateAction } from '../redux/actions/authenticateAction';
 
-const Login = ({ setAuthenticate }) => {
+const Login = ({ authenticate, setAuthenticate }) => {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -13,7 +13,7 @@ const Login = ({ setAuthenticate }) => {
     const loginUser = (e) => {
         e.preventDefault();
         setAuthenticate(true);
-        dispatch(authenticateAction.login(id, password));
+        dispatch(authenticateAction.login(id, password, authenticate));
         navigate("/");
     }
 

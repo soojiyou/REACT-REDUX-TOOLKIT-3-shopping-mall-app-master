@@ -35,10 +35,10 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar setAuthenticate={setAuthenticate} authenticate={authenticate} />
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/login" element={<Login setAuthenticate={setAuthenticate} />} />
+        <Route path="/login" element={<Login setAuthenticate={setAuthenticate} authenticate={authenticate} />} />
         <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} />} />
 
       </Routes>

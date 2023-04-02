@@ -1,29 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Dropdown, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { productAction } from '../redux/actions/productAction';
+
 
 const ProductDetail = ({ item }) => {
+    // const [product, setProduct] = useState(null);
+    const dispatch = useDispatch();
     let { id } = useParams();
-    const [product, setProduct] = useState(null);
-    const getProductDetail = async () => {
-        let url = `http://localhost:5000/products/${id}`;
-        let response = await fetch(url);
-        let data = await response.json();
-        console.log(data);
-        setProduct(data);
+    let productSelected = useSelector(state => state.product.selectedItem);
+    console.log(productSelected, { id });
+
+    const getProductInfo = async () => {
+        dispatch(productAction.getProductDetail(id));
     }
+
+    // useEffect(() => {
+    //     dispatch(productAction.getProductDetail({ id }));
+    // }, [dispatch, id])
+
     useEffect(() => {
-        getProductDetail()
+        getProductInfo()
     }, [])
+
+
 
     return (
         <Container>
             <Row>
                 <Col className='product-img'>
-                    <img src={product?.img} /></Col>
+                    <img src={productSelected?.img} /></Col>
                 <Col>
-                    <div>{product?.title}</div>
-                    <div>{product?.price}</div>
+                    <div>{productSelected?.title}</div>
+                    <div>{productSelected?.price}</div>
+                    <div className="choice">
+                        {productSelected.choice ? "Conscious choice" : ""}
+                    </div>
+                    <Dropdown className="drop-down">
+                        <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
+                            Select Size
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            {productSelected?.size?.length > 0 &&
+                                productSelected?.size.map((item) => (
+                                    <Dropdown.Item href="#/action-1">{item}</Dropdown.Item>
+                                ))}
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Button variant="dark" className="add-button">
+                        add
+                    </Button>
                 </Col>
             </Row>
 
