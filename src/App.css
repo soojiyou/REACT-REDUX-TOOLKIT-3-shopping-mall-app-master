@@ -1,0 +1,63 @@
+.login-box {
+  display: flex;
+  justify-content: flex-end;
+  margin: 50px;
+}
+
+.login {
+  cursor: pointer;
+}
+
+.logo-box {
+  display: flex;
+  justify-content: center;
+}
+
+/* .nav-box {
+  display: grid;
+
+} */
+
+.menu-box {
+  display: flex;
+  justify-content: center;
+
+}
+
+.nav-menu {
+  display: flex;
+  list-style-type: none;
+
+}
+
+.nav-menu li {
+  padding: 10px;
+}
+
+.input-bar {
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+.search-box {
+  display: flex;
+  justify-content: flex-end;
+  margin: 50px;
+}
+
+
+/* Login.js */
+.login-form-box {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  width: 50%;
+}
+
+/* ProductDetail.js */
+.product-img {
+  display: flex;
+  justify-content: flex-end;
+}
