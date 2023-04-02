@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -66,15 +65,16 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
             </div>
 
 
+            <Link to="/">
+                <div className='logo-box'>
+                    <img width={100} src="https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg" />
 
-            <div className='logo-box'>
-                <img width={100} src="https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg" onClick={() => window.location.href = '/'} />
-
-            </div>
+                </div>
+            </Link>
             <div className='nav-box'>
                 <div className='menu-box'>
                     <ul className='nav-menu'>
-                        {menuList.map(menu => <li>{menu}</li>)}
+                        {menuList.map((menu, index) => <li key={index}>{menu}</li>)}
                     </ul>
                 </div>
 

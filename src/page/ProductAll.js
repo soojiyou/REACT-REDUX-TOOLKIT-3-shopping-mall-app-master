@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import ProductCard from '../components/ProductCard';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useSearchParams } from "react-router-dom";
@@ -33,7 +33,7 @@ const ProductAll = () => {
                 <Row>
                     {productList.map((item) => (
                         <Col lg={3} key={item.id}>
-                            <ProductCard item={item} />
+                            <ProductCard key={item.id} item={item} />
                         </Col>
                     ))}
                 </Row>

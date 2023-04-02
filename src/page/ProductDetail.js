@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Dropdown, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,10 +15,6 @@ const ProductDetail = ({ item }) => {
     const getProductInfo = async () => {
         dispatch(productAction.getProductDetail(id));
     }
-
-    // useEffect(() => {
-    //     dispatch(productAction.getProductDetail({ id }));
-    // }, [dispatch, id])
 
     useEffect(() => {
         getProductInfo()
